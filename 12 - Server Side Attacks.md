@@ -1,5 +1,12 @@
 # Introduction
 
+### SSRF
+
+### SSTI
+
+### SSII
+### XSLT
+
 # SSRF
 ## Intro to SSRF
 ## Identifying SSRF

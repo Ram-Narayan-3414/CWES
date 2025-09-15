@@ -251,9 +251,6 @@ Put is used to update API entries and modify their details, PATCH is used to par
 
 To edit using PUT:
 	`curl -X PUT URL/api.php/city/london -d '{"City_name":"New_City", "Country_name":"HTB"}' -H 'Content-Type: application/json'`
-
-
-
 ### Delete
 To delete using DELETE:
 	`curl -X DELETE URL/api.php/city/CITYNAME`
