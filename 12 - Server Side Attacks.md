@@ -88,8 +88,13 @@ The following are supported:
 need to have python 2
 command:
 	`python2.7 gopherus.py --exploit smtp`
-	
+### Assessment
 ## Blind SSRF
+
+### Identifying Blind SSRF
+
+### Exploiting Blind SSRF
+
 ## Preventing SSRF
 # SSTI
 ## Template Engines
